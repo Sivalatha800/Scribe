@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-sm-4 col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title text-center">
+            <h4>Login</h4>
+          </div>
+
+          <div class="card-text mt-4">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+              <div class="form-group mb-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  formControlName="email"
+                />
+
+                <div
+                  class="text-danger mt-1 ms-2"
+                  *ngIf="
+                    !myForm.controls['email'].value &&
+                    myForm.controls['email'].touched
+                  "
+                >
+                  Valid Email is required
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter your password"
+                  formControlName="password"
+                />
+                <div
+                  class="text-danger mt-1 ms-2"
+                  *ngIf="
+                    !myForm.controls['password'].value &&
+                    myForm.controls['password'].touched
+                  "
+                >
+                  Password is required
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-warning col-12 mb-2"
+                  [disabled]="!myForm.valid"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+
+            <div class="text-center mt-3">
+              <button class="btn btn-link" routerLink="/home">
+                Don't have an account? Create One
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div class="alert alert-success" *ngIf="message.length > 0">
+          {{ message }}
+        </div>
+        <div class="alert alert-danger" *ngIf="errmessage.length > 0">
+          {{ errmessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

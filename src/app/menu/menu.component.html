@@ -1,0 +1,53 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container-fluid mx-lg-4 mx-md-3 mx-sm-1">
+    <a class="navbar-brand" href="#">
+      <img src="assets/Scribe-Logo.png" alt="Scribe" />
+    </a>
+    <button
+      class="navbar-toggler text-white"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center ms-4">
+        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn">
+          <a class="nav-link" routerLink="/myblogs">Home</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
+          <button
+            class="btn btn-outline-light px-5 pb-2 fw-bold rounded-pill"
+            routerLink="/login"
+          >
+            Login
+          </button>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn">
+          <a class="nav-link" routerLink="/profile">My Profile</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn">
+          <a class="nav-link" routerLink="/" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
