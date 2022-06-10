@@ -11,9 +11,24 @@
         [(ngModel)]="title"
       />
     </div>
-
+    <br />
     <div class="form-group">
       <label>Post Content</label>
+      <div class="editor">
+        <ngx-editor-floating-menu [editor]="editor">
+          <ngx-editor-menu
+            [editor]="editor"
+            [toolbar]="toolbar"
+          ></ngx-editor-menu>
+        </ngx-editor-floating-menu>
+        <ngx-editor [editor]="editor" [(ngModel)]="content"> </ngx-editor>
+      </div>
+    </div>
+
+    <div class="form-group float-end mt-3">
+      <button class="btn btn-warning rounded-pill" (click)="createPost()">
+        Submit
+      </button>
     </div>
   </div>
 </div>
