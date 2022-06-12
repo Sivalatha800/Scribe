@@ -23,9 +23,10 @@ export class AuthService {
             ?.updateProfile({
               displayName: firstName + ' ' + lastName,
               photoURL: 'https://robohash.org/' + randomNumber,
+              // photoURL: 'https://picsum.photos/' + randomNumber,
             })
             .then(() => {
-              resolve(response);
+              resolve(response.user);
             })
             .catch((error) => {
               reject(error);

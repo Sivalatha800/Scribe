@@ -19,6 +19,9 @@ import { MyblogsComponent } from './myblogs/myblogs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateComponent } from './create/create.component';
 import { PostComponent } from './post/post.component';
+import { ViewComponent } from './view/view.component';
+import { CommentsComponent } from './comments/comments.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBW7uR-U88OHs0qyoC8UT7YHL0yArFfgo8',
@@ -43,6 +46,9 @@ const app = firebase.initializeApp(firebaseConfig);
     ProfileComponent,
     CreateComponent,
     PostComponent,
+    ViewComponent,
+    CommentsComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

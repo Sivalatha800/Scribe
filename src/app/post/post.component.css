@@ -1,0 +1,6 @@
+.card a {
+  text-decoration: none;
+}
+.card a:hover {
+  text-decoration: underline;
+}

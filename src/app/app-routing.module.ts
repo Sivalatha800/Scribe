@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { MyblogsComponent } from './myblogs/myblogs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
+import { ViewComponent } from './view/view.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,11 @@ const routes: Routes = [
     path: 'profile/:id',
     component: ProfileComponent,
   },
-
+  { path: 'edit-profile/:id', component: EditProfileComponent },
+  {
+    path: 'view/:postId',
+    component: ViewComponent,
+  },
   {
     path: '**',
     redirectTo: 'home',

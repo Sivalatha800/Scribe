@@ -8,6 +8,12 @@ import {
 
 import { AuthService } from 'src/app/auth.service';
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,7 +24,11 @@ export class SignupComponent implements OnInit {
   message: string = '';
   errmessage: any;
 
-  constructor(public fb: FormBuilder, public authservice: AuthService) {
+  constructor(
+    public fb: FormBuilder,
+    public authservice: AuthService,
+    public router: Router
+  ) {
     this.myForm = this.fb.group(
       {
         firstName: new FormControl('', [Validators.required]),
@@ -59,15 +69,30 @@ export class SignupComponent implements OnInit {
 
     this.authservice
       .signup(email, password, firstName, lastName)
-      .then((response) => {
-        console.log(response);
-        this.message = 'You have been signed up successfully. Please login';
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errmessage = error;
+      .then((user: any) => {
+        firebase
+          .firestore()
+          .collection('users')
+          .doc(user?.uid)
+          .set({
+            firstName: myForm.value.firstName,
+            lastName: myForm.value.lastName,
+            email: myForm.value.email,
+            photoURL: user.photoURL,
+            interests: '',
+            bio: '',
+            hobbies: '',
+          })
+          .then(() => {
+            this.message = 'You have been signed up successfully. Please login';
+            this.errmessage = null;
+            this.router.navigate(['/myblogs']);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.errmessage = error;
+          });
       });
   }
-
   ngOnInit(): void {}
 }
